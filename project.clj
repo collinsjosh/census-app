@@ -19,6 +19,8 @@
                  [org.clojure/java.jdbc "0.7.0-alpha1"]
                  [com.microsoft.sqlserver/sqljdbc42 "4.2"]
                  [org.clojure/data.json "0.2.6"]]
+  :plugins [[ohpauleez/lein-pedestal "0.1.0-beta10"]]
+  :pedestal {:server-ns "census-app.server"}
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
   ;; If you use HTTP/2 or ALPN, use the java-agent to pull in the correct alpn-boot dependency
