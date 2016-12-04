@@ -1,4 +1,4 @@
-(defproject census-app "0.0.1-SNAPSHOT"
+(defproject census-app "1.0.0"
   :description "A sample app for exploring census data"
   :url ""
   :license {:name "Eclipse Public License"
