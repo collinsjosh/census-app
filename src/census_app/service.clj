@@ -98,7 +98,7 @@
               ::http/resource-path "/public"
 
               ;; Either :jetty, :immutant or :tomcat (see comments in project.clj)
-              ::http/type :jetty
+              ::http/type :tomcat
               ;;::http/host "localhost"
               ::http/port 80
               ;; Options to pass to the container (Jetty)
