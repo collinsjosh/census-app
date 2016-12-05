@@ -1,6 +1,6 @@
 (defproject census-app "1.0.0"
   :description "A sample app for exploring census data"
-  :url ""
+  :url "http://census-app.azurewebsites.net"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
