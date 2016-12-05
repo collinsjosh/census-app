@@ -4,7 +4,8 @@
             [io.pedestal.log :as log]
             [io.pedestal.http.body-params :as body-params]
             [ring.util.response :as ring-resp]
-            [census-app.db :as db]))
+            [census-app.db :as db]
+            [environ.core :refer [env]]))
 
 
 (defn response [status body]
@@ -74,17 +75,17 @@
               ["/locations/:state/:county" :get [http/json-body response-code location-data]]})
 
 
-
+(def port (Integer. (or (env :port) 8080)))
 
 ;; Consumed by census-api.server/create-server
 ;; See http/default-interceptors for additional options you can configure
-(def service {:env :prod
+(def service {:env                 :prod
               ;; You can bring your own non-default interceptors. Make
               ;; sure you include routing and set it up right for
               ;; dev-mode. If you do, many other keys for configuring
               ;; default interceptors will be ignored.
               ;; ::http/interceptors []
-              ::http/routes routes
+              ::http/routes        routes
 
               ;; Uncomment next line to enable CORS support, add
               ;; string(s) specifying scheme, host and port for
@@ -98,14 +99,15 @@
               ::http/resource-path "/public"
 
               ;; Either :jetty, :immutant or :tomcat (see comments in project.clj)
-              ::http/type :tomcat
+              ::http/type          :jetty
               ;;::http/host "localhost"
-              ::http/port 80
+
+              ::http/port port
               ;; Options to pass to the container (Jetty)
-              ::http/container-options {:h2c? true
-                                        :h2? false
-                                        ;:keystore "test/hp/keystore.jks"
-                                        ;:key-password "password"
-                                        ;:ssl-port 8443
-                                        :ssl? false}})
+                                   ::http/container-options {:h2c? true
+                                                             :h2?  false
+                                                             ;:keystore "test/hp/keystore.jks"
+                                                             ;:key-password "password"
+                                                             ;:ssl-port 8443
+                                                             :ssl? false}})
 
