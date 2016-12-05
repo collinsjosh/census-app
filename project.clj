@@ -17,7 +17,8 @@
                  [org.slf4j/jcl-over-slf4j "1.7.21"]
                  [org.slf4j/log4j-over-slf4j "1.7.21"]
                  [org.clojure/java.jdbc "0.7.0-alpha1"]
-                 [com.microsoft.sqlserver/sqljdbc42 "4.2"]
+                 ;;[com.microsoft.sqlserver/sqljdbc42 "4.2"]
+                 [com.microsoft.sqlserver/sqljdbc4 "4.0"]
                  [org.clojure/data.json "0.2.6"]]
   :plugins [[ohpauleez/lein-pedestal "0.1.0-beta10"]]
   :pedestal {:server-ns "census-app.server"}
