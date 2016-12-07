@@ -29,9 +29,11 @@
   :resource-paths ["config", "resources"]
   ;; If you use HTTP/2 or ALPN, use the java-agent to pull in the correct alpn-boot dependency
   ;:java-agents [[org.mortbay.jetty.alpn/jetty-alpn-agent "2.0.3"]]
-  :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "census-api.server/run-dev"]}
-                   :dependencies [[io.pedestal/pedestal.service-tools "0.5.1"]]}
-             :uberjar {:aot [census-app.server]}
+  :profiles {:dev        {:aliases      {"run-dev" ["trampoline" "run" "-m" "census-api.server/run-dev"]}
+                          :dependencies [[io.pedestal/pedestal.service-tools "0.5.1"]]
+                          :env          {:jdbc-database-username "jcollins"
+                                         :jdbc-database-password "Censusd3m0"}}
+             :uberjar    {:aot [census-app.server]}
              :production {:env {:production true}}}
   :main ^{:skip-aot true} census-app.server)
 

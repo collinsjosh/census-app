@@ -47,4 +47,8 @@ Temporary Items
 .apdisk
 
 #intelliJ
-.idea/
+.idea/*
+census-app.iml
+
+#project files
+logs/*

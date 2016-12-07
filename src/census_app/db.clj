@@ -1,16 +1,16 @@
 (ns census-app.db
   (:require
     [clojure.java.jdbc :as jdbc]
-    [clojure.set :as set]))
+    [clojure.set :as set]
+    [environ.core :refer [env]]))
 
 
 (def db-spec {:classname              "com.microsoft.jdbc.sqlserver.SQLServerDriver"
               :subprotocol            "sqlserver"
-              ;;:subname "//aloha-808.database.windows.net:1433;Initial Catalog=dbname;"
               :subname                "//aloha-808.database.windows.net:1433;"
               :database               "census"
-              :user                   "jcollins"
-              :password               "Censusd3m0"
+              :user                   (env :jdbc-database-username)
+              :password               (env :jdbc-database-password)
               :encrypt                true
               :trustServerCertificate false
               :hostNameInCertificate  "*.database.windows.net"

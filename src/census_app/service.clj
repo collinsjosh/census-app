@@ -70,7 +70,8 @@
 (def common-interceptors [(body-params/body-params) http/html-body])
 
 ;; Tabular routes
-(def routes #{["/locations" :get [http/json-body response-code all-states]]
+(def routes #{
+              ["/locations" :get [http/json-body response-code all-states]]
               ["/locations/:state" :get [http/json-body response-code counties-by-state]]
               ["/locations/:state/:county" :get [http/json-body response-code location-data]]})
 

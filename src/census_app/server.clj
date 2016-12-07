@@ -1,5 +1,5 @@
 (ns census-app.server
-  (:gen-class)                                              ; for -main method in uberjar
+  (:gen-class)
   (:require [io.pedestal.http :as server]
             [io.pedestal.http.route :as route]
             [census-app.service :as service]))
@@ -12,8 +12,8 @@
   "The entry-point for 'lein run-dev'"
   [& args]
   (println "\nCreating your [DEV] server...")
-  (-> service/service                                       ;; start with production configuration
-      (merge {:env                     :dev
+  (-> service/service             ;; start with production configuration
+      (merge {:env   :dev
               ;; do not block thread that starts web server
               ::server/join?           false
               ;; Routes can be a function that resolve routes,
