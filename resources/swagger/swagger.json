@@ -1,0 +1,87 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Census API",
+        "description": "The Census API wraps the Quick Facts data from the U.S. census of 2010.  It supplies lists of states, counties, and details about their populations.",
+        "version": "1.0.0"
+    },
+    "host": "peaceful-taiga-33169.herokuapp.com",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/locations": {
+            "get": {
+                "description": "Returns an array of states.",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/locations/{state}": {
+            "get": {
+                "description": "Returns population details and a list of counties for a given state.\n",
+                "parameters": [
+                    {
+                        "name": "state",
+                        "in": "path",
+                        "description": "The ID of a state",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/locations/{state}/{county}": {
+            "get": {
+                "description": "Returns population details for a specific county.\n",
+                "parameters": [
+                    {
+                        "name": "state",
+                        "in": "path",
+                        "description": "The ID of a state",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "county",
+                        "in": "path",
+                        "description": "The ID of a county",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    }
+}
