@@ -2,11 +2,25 @@
   (:gen-class)
   (:require [io.pedestal.http :as server]
             [io.pedestal.http.route :as route]
-            [census-app.service :as service]))
+            [census-app.service :as service])
+  (:import (java.net Authenticator PasswordAuthentication)))
 
 ;; This is an adapted service map, that can be started and stopped
 ;; From the REPL you can call server/start and server/stop on this service
 (defonce runnable-service (server/create-server service/service))
+
+
+;; I'm using a SOCKS Proxy for Heroku to present a consistent IP Address to
+;; the Azure Firewall.
+(System/setProperty "socksProxyHost" "speedway.usefixie.com")
+(System/setProperty "socksProxyPort" "1080")
+
+(java.net.Authenticator/setDefault
+  (proxy [java.net.Authenticator] []
+    (getPasswordAuthentication []
+      (PasswordAuthentication.
+        "fixie" (.toCharArray "czRD3RvJBTadGBt")))))
+
 
 (defn run-dev
   "The entry-point for 'lein run-dev'"
