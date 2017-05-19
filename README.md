@@ -14,7 +14,7 @@ From your terminal:
 > lein run
 ```
 
-Go to [localhost:8080/index.html](http://localhost:8080/index.html) and your discover the secrets of US demographics.
+Go to [localhost:8080/index.html](http://localhost:8080/index.html) and discover the secrets of US demographics.
 
 ## About
 Census-app uses the [Quick Facts](https://www.census.gov/quickfacts/table/PST045215/00) data that summarizes the 2010 U.S. census results.  The app presents a [population pyrimad](https://en.wikipedia.org/wiki/Population_pyramid) for any state and county in the U.S.
@@ -24,8 +24,3 @@ census-app is built with:
 * A SQL Server database hosted on the Azure platform
 * An API built with Clojure using the Pedestal library
 * A single page application that uses the Highcharts javascript library
-
-
-
-
-
